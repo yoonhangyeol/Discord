@@ -10,8 +10,9 @@ class DB:
     def __init__(self):
         load_dotenv()
         MONGO_URI = os.getenv("MONGO_URI")
-    
+        print(MONGO_URI)
         self.Discord = MongoClient(MONGO_URI, server_api=ServerApi('1'))["Discord"]
+        print("MongoDB에 연결!")
     def whlog(self):
         '''
         유저가 등록과정을 거쳤는지 확인합니다.
