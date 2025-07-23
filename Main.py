@@ -20,7 +20,7 @@ class Bot(commands.Bot):
     
     async def setup_hook(self):
         print("A")
-        for filename in os.listdir("./Discord/cogs"):
+        for filename in os.listdir("./cogs"):
             if filename.endswith(".py"):
                 await self.load_extension(f"cogs.{filename[:-3]}")
         
