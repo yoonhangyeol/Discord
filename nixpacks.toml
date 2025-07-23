@@ -5,4 +5,4 @@ nixPkgs = ["python310"]
 cmds = []
 
 [phases.start]
-cmd = "python cog.py"
+cmd = "python main.py"
