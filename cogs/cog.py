@@ -1,8 +1,8 @@
-import discord, datetime, os
+import discord, datetime, sys
+sys.path.append("./")
 from discord.ext import commands
 from discord.app_commands import Group
 import Main
-
 
 class money(commands.Cog):
     util_group = Group(name="money", description="돈에 관련된 명령어들을 지원합니다.")
