@@ -1,12 +1,10 @@
-import discord, datetime, sys
-sys.path.append("./")
+import discord, datetime
 from discord.ext import commands
 from discord.app_commands import Group
-import Main
 
 class money(commands.Cog):
     util_group = Group(name="money", description="돈에 관련된 명령어들을 지원합니다.")
-    def __init__(self, bot: Main.Bot):
+    def __init__(self, bot: commands.Bot):
         self.Dbcord = bot.DB
         
     @util_group.command(description="마치 노숙자처럼 바닥에 돈이 있는지 살펴봅니다.")
@@ -32,7 +30,7 @@ class money(commands.Cog):
 
 class status(commands.Cog):
     util_group = Group(name="status", description="자신의 정보를 확인합니다.")
-    def __init__(self, bot: Main.Bot):
+    def __init__(self, bot: commands.Bot):
         self.Dbcord = bot.DB
         
     @util_group.command(description="전체적인 정보를 확인합니다.")
@@ -64,7 +62,7 @@ class reload(commands.Cog):
             await interaction.response.send_message(f"오류 내용 : {e}")
             print("Fail..")
 
-async def setup(bot: Main.Bot):
+async def setup(bot: commands.Bot):
     await bot.add_cog(money(bot))
     await bot.add_cog(status(bot))
     await bot.add_cog(reload(bot))
