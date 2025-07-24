@@ -1,4 +1,4 @@
-import discord, os
+import discord, os, certifi
 from discord.ext import commands
 from discord import Intents
 from pymongo.mongo_client import MongoClient
@@ -8,7 +8,11 @@ from dotenv import load_dotenv
 class DB:
     Discord = None
     def __init__(self, MONGO_URI):
-        self.Discord = MongoClient(MONGO_URI, server_api=ServerApi('1'))["Discord"]
+        try:
+            self.Discord = MongoClient(MONGO_URI, server_api=ServerApi('1'), tlsCAFile=certifi.where())["Discord"]
+            print(self.Discord.list_database_names())
+        except Exception as e:
+            print(f"DB 연결 실패: {e}")
     
     def whlog(self):
         '''
